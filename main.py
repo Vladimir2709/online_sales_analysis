@@ -1,5 +1,8 @@
 from product import Product
 from product_manager import ProductManager
+import random
+from cart import Cart
+
 
 def main():
     manager = ProductManager()
@@ -15,6 +18,17 @@ def main():
     manager.display_products()
 
     print(f"\nUkupna vrednost imventara: {manager.total_inventory_value():.2f}")
+    print()
+
+
+    cart = Cart()
+    selected_products = random.sample(manager.products, 3)
+    for product in selected_products:
+        cart.add_item(product)
+
+    print("=== Sadrzaj korpe ===")
+    cart.display_cart()
+    print(f"\nUkupno za naplatu: {cart.calculate_total():.2f}")
 
 
 
